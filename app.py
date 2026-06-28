@@ -80,14 +80,17 @@ st.caption(
 )
 st.markdown(
     """
-> **How these tabs map to the report's three use cases:**
-> **Entity Extraction** + **Summarization** → *Coding productivity* (surfacing diagnoses/procedures and
-> condensing long notes so a coder reads less to code the same chart).
-> **Semantic Search** → *Payer policy comparison* (the same retrieval mechanics used here over clinical
-> notes apply directly to retrieving relevant policy text by meaning, not keyword).
-> **Risk Scoring** → *Documentation validation* (a transparent, rule-based check that flags when extracted
-> findings suggest a higher acuity than what's reflected — the kind of auditable gap-flag this use case needs).
-> **OCR** underlies all three: most source documents start as scans or faxes, not clean text.
+> **Healthcare Content Management Workflows Demonstrated**
+>
+> **Clinical Content Search** enables rapid retrieval of relevant healthcare information using semantic similarity rather than keyword matching.
+>
+> **Clinical Information Extraction** identifies key clinical concepts, diagnoses, procedures, and medications that may support documentation review and content organization.
+>
+> **Document Summarization** reduces the effort required to review lengthy healthcare documents by generating concise summaries.
+>
+> **Document Digitization** converts scanned or image-based documents into machine-readable text for downstream processing and analysis.
+>
+> **Document Review Insights** demonstrates how extracted information can be analyzed to support review workflows and highlight content that may warrant additional attention.
 """
 )
 
@@ -101,9 +104,11 @@ tab_search, tab_ner, tab_summary, tab_ocr, tab_risk = st.tabs(
 with tab_search:
     st.subheader("Semantic Document Retrieval")
     st.markdown(
-        "Search a small synthetic corpus of clinical notes using vector "
-        "embeddings + FAISS cosine similarity (not keyword matching)."
-    )
+    "Retrieve relevant healthcare content using semantic similarity. "
+    "This workflow demonstrates how clinical documents, policies, and "
+    "other healthcare content can be searched based on meaning rather "
+    "than exact keyword matches."
+)
 
     retriever = load_retriever()
 
@@ -127,8 +132,9 @@ with tab_search:
 with tab_ner:
     st.subheader("Clinical Entity Extraction")
     st.markdown(
-        "Extracts clinical entities (diagnoses, medications, procedures, etc.) "
-        "using a free Hugging Face biomedical NER model."
+    "Identifies clinically relevant concepts such as diagnoses, medications, "
+    "and procedures to support document review, content organization, and "
+    "healthcare information management workflows."
     )
 
     retriever = load_retriever()
@@ -157,7 +163,10 @@ with tab_ner:
 # ---------------------------------------------------------------------------
 with tab_summary:
     st.subheader("Clinical Document Summarization")
-    st.markdown("Condenses long clinical notes using a free, local DistilBART model.")
+    st.markdown(
+    "Generates concise summaries of healthcare documents to reduce manual "
+    "review effort and improve access to key information."
+    )
 
     retriever = load_retriever()
     doc_options2 = {f"{d['id']} — {d['type']}": d["content"] for d in retriever.documents}
@@ -187,8 +196,8 @@ with tab_summary:
 with tab_ocr:
     st.subheader("OCR: Scanned Document Text Extraction")
     st.markdown(
-        "Upload an image of a document (e.g., a photographed or scanned clinical "
-        "note) to extract text using free, local Tesseract OCR."
+    "Convert scanned or image-based healthcare documents into machine-readable "
+    "text that can be searched, analyzed, and summarized through downstream NLP workflows."
     )
 
     if not tesseract_ok:
@@ -217,10 +226,10 @@ with tab_ocr:
 with tab_risk:
     st.subheader("Transparent, Rule-Based Risk Scoring")
     st.markdown(
-        "Scores risk based on clinical entities found in the text. "
-        "Intentionally rule-based (not a black-box model) so the logic "
-        "stays auditable — important in healthcare contexts."
-    )
+    "Demonstrates how extracted clinical information can be analyzed to "
+    "support document review workflows and highlight content that may "
+    "benefit from additional review or validation."
+)
 
     retriever = load_retriever()
     doc_options3 = {f"{d['id']} — {d['type']}": d["content"] for d in retriever.documents}
