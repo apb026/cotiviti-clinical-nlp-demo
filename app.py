@@ -27,7 +27,10 @@ from src.summarizer import ClinicalSummarizer
 from src.ocr import extract_text_from_image, check_tesseract_installed
 from src.risk import score_from_entities
 
-st.set_page_config(page_title="Clinical NLP POC", layout="wide")
+st.set_page_config(
+    page_title="Clinical Policy Intelligence Assistant",
+    layout="wide"
+)
 
 
 # ---------------------------------------------------------------------------
@@ -51,18 +54,16 @@ def load_summarizer():
 # ---------------------------------------------------------------------------
 # Sidebar
 # ---------------------------------------------------------------------------
-st.sidebar.title("Clinical NLP POC")
+st.sidebar.title("Clinical Policy Intelligence Assistant")
 st.sidebar.markdown(
     """
-**Stack (100% free & local):**
-- Embeddings: `all-MiniLM-L6-v2`
-- Vector search: `FAISS`
-- NER: `d4data/biomedical-ner-all`
-- Summarization: `distilbart-cnn-12-6`
-- OCR: `Tesseract`
+### Technical Components
 
-No paid APIs. No cloud calls.
-All data is synthetic (no real PHI).
+- Semantic Retrieval
+- Clinical Information Extraction
+- Document Summarization
+- Document Digitization (OCR)
+- Content Review Insights
 """
 )
 
@@ -72,10 +73,10 @@ if tesseract_ok:
 else:
     st.sidebar.warning("Tesseract OCR not found — OCR tab will not work until installed.")
 
-st.title("🩺 Clinical NLP Proof of Concept")
+st.title("🩺 Clinical Policy Intelligence Assistant")
 st.caption(
-    "Semantic search, entity extraction, summarization, OCR, and risk scoring "
-    "— built entirely with free, open-source, local tools."
+    "Healthcare document analysis, information extraction, semantic retrieval, "
+    "document summarization, and document processing workflows."
 )
 st.markdown(
     """
