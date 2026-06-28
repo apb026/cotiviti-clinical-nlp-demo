@@ -1,0 +1,50 @@
+[
+  {
+    "id": "doc_001",
+    "type": "Discharge Summary",
+    "specialty": "Cardiology",
+    "content": "DISCHARGE SUMMARY. Patient is a 65-year-old male admitted with acute onset chest pain radiating to the left arm, associated with diaphoresis and dyspnea. EKG showed ST elevation in leads II, III, aVF. Patient has a history of type 2 diabetes and hypertension. Assessment: Acute ST-elevation myocardial infarction (STEMI). Patient underwent emergent cardiac catheterization with stent placement to the right coronary artery. Troponin peaked at 2.8 ng/mL. Ejection fraction estimated at 40 percent. Discharge medications include aspirin, ticagrelor, metoprolol, lisinopril, and atorvastatin. Follow-up with cardiology in one week and primary care in three days."
+  },
+  {
+    "id": "doc_002",
+    "type": "Radiology Report",
+    "specialty": "Pulmonology",
+    "content": "RADIOLOGY REPORT. Chest X-ray performed for evaluation of dyspnea and productive cough. Findings show a right lower lobe infiltrate consistent with community-acquired pneumonia. No pleural effusion identified. Heart size is normal. No acute osseous abnormality. Impression: right lower lobe pneumonia. Recommend antibiotic therapy and follow-up imaging in four to six weeks to confirm resolution."
+  },
+  {
+    "id": "doc_003",
+    "type": "Lab Report",
+    "specialty": "Endocrinology",
+    "content": "LABORATORY REPORT. Complete blood count within normal limits. Comprehensive metabolic panel shows glucose of 185 mg/dL, which is elevated above the reference range of 70 to 100 mg/dL. Lipid panel shows total cholesterol of 240 mg/dL, LDL of 165 mg/dL, HDL of 35 mg/dL, and triglycerides of 200 mg/dL, all outside normal reference ranges. Impression: findings consistent with poorly controlled type 2 diabetes mellitus and dyslipidemia. Recommend dietary counseling and consideration of statin therapy adjustment."
+  },
+  {
+    "id": "doc_004",
+    "type": "Progress Note",
+    "specialty": "Oncology",
+    "content": "PROGRESS NOTE. Patient with history of stage II breast cancer presents for routine follow-up six months after completion of adjuvant chemotherapy with doxorubicin and cyclophosphamide. Patient reports mild fatigue but denies fever, night sweats, or unintentional weight loss. Physical exam unremarkable. Recent mammogram and CT chest abdomen pelvis show no evidence of recurrence. Plan: continue tamoxifen, repeat imaging in six months, routine surveillance labs ordered."
+  },
+  {
+    "id": "doc_005",
+    "type": "Emergency Note",
+    "specialty": "Neurology",
+    "content": "EMERGENCY DEPARTMENT NOTE. Patient presents with sudden onset right-sided weakness and slurred speech beginning approximately 90 minutes prior to arrival. CT head shows no acute hemorrhage. Patient meets criteria for tissue plasminogen activator administration. NIH stroke scale score of 12 on arrival. Assessment: acute ischemic stroke, left middle cerebral artery distribution suspected. tPA administered. Patient admitted to stroke unit for close neurological monitoring."
+  },
+  {
+    "id": "doc_006",
+    "type": "Consultation Note",
+    "specialty": "Nephrology",
+    "content": "NEPHROLOGY CONSULTATION. Patient referred for evaluation of progressively worsening renal function. Creatinine has risen from 1.1 to 2.4 mg/dL over the past six months. Urinalysis shows mild proteinuria without hematuria. History significant for long-standing hypertension and type 2 diabetes. Impression: diabetic nephropathy with chronic kidney disease stage 3b. Recommend ACE inhibitor optimization, nephrology follow-up in one month, and referral to dietitian for renal diet counseling."
+  },
+  {
+    "id": "doc_007",
+    "type": "Discharge Summary",
+    "specialty": "Orthopedics",
+    "content": "DISCHARGE SUMMARY. Patient admitted following a fall resulting in a closed fracture of the left femoral neck. Underwent open reduction and internal fixation without complication. Post-operative course unremarkable. Pain well controlled with acetaminophen and oxycodone as needed. Physical therapy initiated on post-operative day one. Discharge plan includes continued physical therapy, weight-bearing as tolerated, and follow-up with orthopedic surgery in two weeks for wound check and staple removal."
+  },
+  {
+    "id": "doc_008",
+    "type": "Primary Care Note",
+    "specialty": "Internal Medicine",
+    "content": "PRIMARY CARE VISIT NOTE. Patient presents for annual wellness visit. Reports good adherence to current medications for hypertension and hyperlipidemia. Blood pressure today is 128 over 82. No new complaints. Review of systems negative. Recommend continuing current medication regimen, routine bloodwork including lipid panel and hemoglobin A1c, and age-appropriate cancer screening including colonoscopy and mammogram as indicated."
+  }
+]
