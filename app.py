@@ -1,16 +1,12 @@
 """
-app.py
-Clinical NLP Proof of Concept - Streamlit App
+Clinical Policy Intelligence Assistant
 
-100% free, open-source, local stack:
-- Embeddings: sentence-transformers/all-MiniLM-L6-v2 (Hugging Face)
-- Vector search: FAISS (faiss-cpu)
-- NER: d4data/biomedical-ner-all (Hugging Face)
-- Summarization: sshleifer/distilbart-cnn-12-6 (Hugging Face)
-- OCR: Tesseract via pytesseract
+A Streamlit application demonstrating healthcare document analysis,
+semantic retrieval, clinical information extraction, document
+summarization, document digitization, and review-support workflows.
 
-No paid APIs. No cloud infrastructure. No paid datasets.
-All clinical text in data/clinical_notes.json is synthetic.
+This project showcases practical Clinical NLP capabilities that can
+support healthcare content management and document review processes.
 """
 
 import sys

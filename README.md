@@ -1,6 +1,6 @@
 # Clinical Policy Intelligence Assistant
 
-AA Streamlit application demonstrating Clinical Natural Language Processing
+A Streamlit application demonstrating Clinical Natural Language Processing
 capabilities for healthcare content analysis, information retrieval,
 document understanding, and workflow support.
 
@@ -11,7 +11,7 @@ content exploration.
 ## Technical Architecture
 
 | Component | Technology |
-|---|---|---|
+|-----------|------------|
 | UI | [Streamlit](https://streamlit.io) | Apache 2.0 |
 | Embeddings | [`sentence-transformers/all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) (Hugging Face) | Apache 2.0 |
 | Vector search | [FAISS](https://github.com/facebookresearch/faiss) (`faiss-cpu`) | MIT |
@@ -26,7 +26,7 @@ content exploration.
 ## What's Inside
 
 ```
-clinical-nlp-poc/
+clinical-policy-intelligence-assistant/
 ├── .devcontainer/
 │   ├── devcontainer.json   # GitHub Codespaces container config (port 8501, 4 CPU / 8GB)
 │   └── setup.sh             # Installs Tesseract + Python deps + pre-caches models
@@ -46,26 +46,24 @@ clinical-nlp-poc/
 
 ### App Tabs (and how each maps to the report's three use cases)
 
-1. **Semantic Search** — type a clinical query, get back the most relevant
+1. **Clinical Content Search** — type a clinical query, get back the most relevant
    synthetic notes ranked by cosine similarity (FAISS over MiniLM embeddings).
    *Maps to: payer policy comparison* — the same retrieval mechanics apply
    directly to finding relevant policy language by meaning, not keyword.
-2. **Entity Extraction** — runs a real biomedical NER model over any note
+2. **EClinical Information Extraction** — runs a real biomedical NER model over any note
    (or your own pasted text) and groups entities by type.
    *Maps to: coding productivity* — surfacing diagnoses/procedures/meds
    without a coder reading the full narrative.
-3. **Summarization** — condenses a clinical note using a local DistilBART
+3. **Document Summarization** — condenses a clinical note using a local DistilBART
    model.
    *Maps to: coding productivity* — shorter notes to review per chart.
-4. **OCR** — upload a photo/scan of a document; Tesseract extracts the text,
-   which you can then feed into the NER or Summarization tabs.
+4. **Document Digitization** — upload a photo/scan of a document; Tesseract extracts the text,
+   which can then be analyzed using the Clinical Information Extraction or Document Summarization workflows.
    *Underlies all three use cases* — most source documents start as scans
    or faxes, not clean text.
-5. Document Review Insights — a transparent rule-based workflow that highlights extracted findings which may benefit from additional review.
-   high/medium-risk findings from the extracted entities. Deliberately
-   rule-based rather than a black-box model, so the logic is auditable.
-   *Maps to: documentation validation* — an auditable flag for when
-   extracted findings suggest higher acuity than what's reflected elsewhere.
+5. 5. **Document Review Insights** — analyzes extracted clinical findings and generates transparent review recommendations based on predefined rules. The workflow highlights information that may warrant additional review, validation, or documentation attention while keeping the decision logic fully explainable.
+
+   *Maps to: documentation validation* — demonstrates an auditable review workflow that surfaces potentially important findings and supports manual review processes.
 
 ---
 
@@ -73,7 +71,7 @@ clinical-nlp-poc/
 
 - Swap `all-MiniLM-L6-v2` for a domain-specific embedding model like
   `pritamdeka/S-PubMedBert-MS-MARCO` for better clinical semantic search.
-- Replace the rule-based risk scorer with a small scikit-learn classifier
+- Replace the rule-based review workflow with a small scikit-learn classifier
   trained on structured features extracted from NER output.
 - Add `pdf2image` to support PDF uploads in the OCR tab (scanned PDFs →
   images → Tesseract).
