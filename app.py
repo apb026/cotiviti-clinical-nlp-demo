@@ -177,7 +177,18 @@ with tab_summary:
     )
 
     default_text2 = doc_options2[choice2]
-    text_input2 = st.text_area("Text to summarize", value=default_text2, height=180, key="summary_text")
+    if (
+        "last_summary_choice" not in st.session_state
+        or st.session_state["last_summary_choice"] != choice2
+    ):
+        st.session_state["summary_text"] = default_text2
+        st.session_state["last_summary_choice"] = choice2
+    text_input2 = st.text_area(
+    "Text to summarize",
+    value=default_text2,
+    height=180,
+    # key=f"summary_text_{choice2}"
+    )
 
     col1, col2 = st.columns(2)
     max_len = col1.slider("Max summary length", 20, 150, 80)
@@ -239,7 +250,19 @@ with tab_risk:
         key="risk_select",
     )
     default_text3 = doc_options3[choice3]
-    text_input3 = st.text_area("Text to assess", value=default_text3, height=180, key="risk_text")
+
+    if (
+        "last_risk_choice" not in st.session_state
+        or st.session_state["last_risk_choice"] != choice3
+    ):
+        st.session_state["risk_text"] = default_text3
+        st.session_state["last_risk_choice"] = choice3
+
+    text_input3 = st.text_area(
+        "Text to assess",
+        key="risk_text",
+        height=180,
+    )
 
     if st.button("Compute Risk Score"):
         ner_model = load_ner()
