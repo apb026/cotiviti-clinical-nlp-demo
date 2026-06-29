@@ -61,7 +61,7 @@ clinical-nlp-poc/
    which you can then feed into the NER or Summarization tabs.
    *Underlies all three use cases* — most source documents start as scans
    or faxes, not clean text.
-5. **Risk Scoring** — a small, transparent, rule-based scorer that flags
+5. Document Review Insights — a transparent rule-based workflow that highlights extracted findings which may benefit from additional review.
    high/medium-risk findings from the extracted entities. Deliberately
    rule-based rather than a black-box model, so the logic is auditable.
    *Maps to: documentation validation* — an auditable flag for when

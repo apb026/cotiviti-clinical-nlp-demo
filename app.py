@@ -95,7 +95,13 @@ st.markdown(
 )
 
 tab_search, tab_ner, tab_summary, tab_ocr, tab_risk = st.tabs(
-    ["🔍 Semantic Search", "🏷️ Entity Extraction", "📝 Summarization", "📷 OCR", "⚠️ Risk Scoring"]
+    [
+        "🔍 Clinical Content Search",
+        "🏷️ Clinical Information Extraction",
+        "📝 Document Summarization",
+        "📷 Document Digitization",
+        "📊 Document Review Insights"
+    ]
 )
 
 # ---------------------------------------------------------------------------
@@ -232,10 +238,10 @@ with tab_ocr:
             st.info("Tip: copy this text into the Entity Extraction or Summarization tabs.")
 
 # ---------------------------------------------------------------------------
-# TAB 5: Risk Scoring (rule-based, built on NER output)
+# TAB 5: Document Review Insights
 # ---------------------------------------------------------------------------
 with tab_risk:
-    st.subheader("Transparent, Rule-Based Risk Scoring")
+    st.subheader("Document Review Insights")
     st.markdown(
     "Demonstrates how extracted clinical information can be analyzed to "
     "support document review workflows and highlight content that may "
@@ -264,17 +270,19 @@ with tab_risk:
         height=180,
     )
 
-    if st.button("Compute Risk Score"):
+    if st.button("Generate Review Insights"):
         ner_model = load_ner()
         with st.spinner("Extracting entities and scoring risk..."):
             entities = ner_model.extract(text_input3)
             risk = score_from_entities(entities)
 
         level_color = {"HIGH": "🔴", "MEDIUM": "🟡", "LOW": "🟢"}[risk["risk_level"]]
-        st.markdown(f"### {level_color} Risk Level: {risk['risk_level']} ({risk['risk_score']}/100)")
+        st.markdown(
+            f"### {level_color} Review Priority: {risk['risk_level']} ({risk['risk_score']}/100)"
+        )
 
         if risk["risk_factors"]:
-            st.markdown("**Risk factors detected:**")
+            st.markdown("**Review considerations identified:**")
             for factor in risk["risk_factors"]:
                 st.write(f"- {factor}")
         else:
@@ -285,6 +293,6 @@ with tab_risk:
 
 st.divider()
 st.caption(
-    "Built with Streamlit, Hugging Face Transformers, Sentence-Transformers, "
-    "FAISS, and Tesseract OCR — all free and open-source. No data leaves your machine."
+    "Demonstrates healthcare document retrieval, information extraction, "
+    "summarization, document digitization, and review-support workflows."
 )
