@@ -1,18 +1,23 @@
 """
 risk.py
-Simple, transparent, rule-based risk scoring built on top of NER output.
-No black-box model required - this keeps the logic auditable, which matters
-in healthcare contexts where explainability is critical.
+
+Transparent, rule-based document review insights generated from
+clinical entities extracted through the NER workflow.
+
+The purpose is not clinical risk prediction, but to highlight
+findings that may warrant additional review, validation, or
+documentation attention while keeping the decision logic fully
+auditable and explainable.
 """
 
 from typing import Dict, List
 
-HIGH_RISK_TERMS = [
+HIGH_PRIORITY_TERMS = [
     "stemi", "myocardial infarction", "stroke", "ischemic stroke",
     "hemorrhage", "sepsis", "respiratory failure", "cardiac arrest",
 ]
 
-MEDIUM_RISK_TERMS = [
+MEDIUM_PRIORITY_TERMS = [
     "pneumonia", "diabetes", "hypertension", "chronic kidney disease",
     "fracture", "dyslipidemia", "cancer", "chemotherapy",
 ]
@@ -20,8 +25,9 @@ MEDIUM_RISK_TERMS = [
 
 def score_from_entities(entities: Dict[str, List[str]]) -> Dict:
     """
-    Scan all extracted entity strings (regardless of label) for known
-    high/medium risk clinical terms and compute a simple 0-100 risk score.
+    Analyze extracted clinical entities and generate a simple,
+    transparent review-priority score based on predefined findings
+    that may benefit from additional review.
     """
     all_terms: List[str] = []
     for label, words in entities.items():
@@ -32,15 +38,15 @@ def score_from_entities(entities: Dict[str, List[str]]) -> Dict:
     score = 0
     matched_factors = []
 
-    for term in HIGH_RISK_TERMS:
+    for term in HIGH_PRIORITY_TERMS:
         if term in text_blob:
             score += 35
-            matched_factors.append(f"High-risk finding: {term}")
+            matched_factors.append(f"High-priority review finding: {term}")
 
-    for term in MEDIUM_RISK_TERMS:
+    for term in MEDIUM_PRIORITY_TERMS:
         if term in text_blob:
             score += 15
-            matched_factors.append(f"Medium-risk finding: {term}")
+            matched_factors.append(f"Medium-priority review finding: {term}")
 
     score = min(score, 100)
     if score >= 50:
