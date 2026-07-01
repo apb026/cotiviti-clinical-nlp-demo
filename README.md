@@ -10,15 +10,15 @@ content exploration.
 
 ## Technical Architecture
 
-| Component | Technology |
-|-----------|------------|
+| Component | Technology | License |
+|-----------|------------|---------|
 | UI | [Streamlit](https://streamlit.io) | Apache 2.0 |
-| Embeddings | [`sentence-transformers/all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) (Hugging Face) | Apache 2.0 |
+| Embeddings | [`sentence-transformers/all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) | Apache 2.0 |
 | Vector search | [FAISS](https://github.com/facebookresearch/faiss) (`faiss-cpu`) | MIT |
-| Clinical NER | [`d4data/biomedical-ner-all`](https://huggingface.co/d4data/biomedical-ner-all) (Hugging Face) | Apache 2.0 |
-| Summarization | [`sshleifer/distilbart-cnn-12-6`](https://huggingface.co/sshleifer/distilbart-cnn-12-6) (Hugging Face) | Apache 2.0 |
+| Clinical NER | [`d4data/biomedical-ner-all`](https://huggingface.co/d4data/biomedical-ner-all) | Apache 2.0 |
+| Summarization | [`sshleifer/distilbart-cnn-12-6`](https://huggingface.co/sshleifer/distilbart-cnn-12-6) | Apache 2.0 |
 | OCR | [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) via `pytesseract` | Apache 2.0 |
-| Data | Demonstration clinical documents used to showcase retrieval, entity extraction, summarization, and document-processing workflows |
+| Data | Demonstration clinical documents | N/A |
 
 
 ---
@@ -41,7 +41,7 @@ clinical-policy-intelligence-assistant/
     ├── ner.py                # Hugging Face biomedical NER
     ├── summarizer.py         # Hugging Face DistilBART summarization
     ├── ocr.py                # Tesseract OCR wrapper
-    └── risk.py               # Transparent, rule-based risk scoring
+    └── risk.py               # TTransparent rule-based document review insights workflow
 ```
 
 ### App Tabs (and how each maps to the report's three use cases)
@@ -50,7 +50,7 @@ clinical-policy-intelligence-assistant/
    synthetic notes ranked by cosine similarity (FAISS over MiniLM embeddings).
    *Maps to: payer policy comparison* — the same retrieval mechanics apply
    directly to finding relevant policy language by meaning, not keyword.
-2. **EClinical Information Extraction** — runs a real biomedical NER model over any note
+2. **Clinical Information Extraction** — runs a real biomedical NER model over any note
    (or your own pasted text) and groups entities by type.
    *Maps to: coding productivity* — surfacing diagnoses/procedures/meds
    without a coder reading the full narrative.
@@ -61,7 +61,7 @@ clinical-policy-intelligence-assistant/
    which can then be analyzed using the Clinical Information Extraction or Document Summarization workflows.
    *Underlies all three use cases* — most source documents start as scans
    or faxes, not clean text.
-5. 5. **Document Review Insights** — analyzes extracted clinical findings and generates transparent review recommendations based on predefined rules. The workflow highlights information that may warrant additional review, validation, or documentation attention while keeping the decision logic fully explainable.
+5. **Document Review Insights** — analyzes extracted clinical findings and generates transparent review recommendations based on predefined rules. The workflow highlights information that may warrant additional review, validation, or documentation attention while keeping the decision logic fully explainable.
 
    *Maps to: documentation validation* — demonstrates an auditable review workflow that surfaces potentially important findings and supports manual review processes.
 
@@ -77,5 +77,25 @@ clinical-policy-intelligence-assistant/
   images → Tesseract).
 - Persist the FAISS index to disk (`faiss.write_index`) instead of rebuilding
   it on every app restart, once the corpus grows beyond the demo size.
+
+---
+
+## Deliverables
+
+### Report
+Atharva_Bhale_Clinical_NLP_Report.docx
+
+### Presentation
+Clinical_NLP_Presentation.pptx
+
+### Demonstration Videos
+
+Part 1:
+https://www.loom.com/share/9aa464fc4def4001b2f14c7cbb25ee71
+
+Part 2:
+https://www.loom.com/share/215efc6619754069addab838257dbf43
+
+Note: The demonstration was recorded in two parts due to Loom free-tier recording limits.
 
 ---
